@@ -4,6 +4,7 @@ export default function Home() {
  return(
  <Button>
 Clickme!
+hi
  </Button>
  )
 }
