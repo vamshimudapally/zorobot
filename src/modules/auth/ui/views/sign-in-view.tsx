@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
+import {FaGithub , FaGoogle} from "react-icons/fa";
 import { 
     Form,
     FormControl,
@@ -23,15 +24,14 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 const formSchema = z.object({
     email: z.string().email(),
     password: z.string().min(1,{message:"password is required"}),
 });
 
 export const SignInView = () => {
+    const router =useRouter();
 
-    const router = useRouter();
     const [error , setError] = useState<string | null>(null);
     const [pending, setPending] =useState(false);
 
@@ -52,11 +52,13 @@ export const SignInView = () => {
                 email: data.email,
                 password: data.password,
 
+                callbackURL: "/",
+
             },
             {
                 onSuccess: () => {
-                    setPending(false)
-                    router.push("/")
+                    setPending(false);
+                    router.push("/");
                 },
                 onError: ({error}) => {
                     setPending(false)
@@ -67,6 +69,29 @@ export const SignInView = () => {
         );
 
     }
+    const onSocial =  (provider: "github" | "google") => {
+            setError(null);
+            setPending(true);
+    
+            authClient.signIn.social(
+                {
+                    provider: provider,
+                    callbackURL: "/",
+    
+                },
+                {
+                    onSuccess: () => {
+                        setPending(false)
+                    },
+                    onError: ({error}) => {
+                        setPending(false)
+                        setError(error.message)
+                    },
+    
+                }
+            );
+    
+        }
     return (
         <div className="flex flex-col gap-6">
         <Card className="overflow-hidden p-0" >
@@ -142,19 +167,21 @@ export const SignInView = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <Button
                                 disabled={pending}
+                                onClick={() => onSocial("google")}
                                 variant="outline"
                                 type="button"
                                 className="w-full"
                                 >
-                                    Google
+                                    <FaGoogle/>
                                 </Button>
                                 <Button
                                 disabled={pending}
+                                onClick={() => onSocial("github")}
                                 variant="outline"
                                 type="button"
                                 className="w-full"
                                 >
-                                    Github
+                                    <FaGithub/>
                                 </Button>
                             </div>
                             <div className="text-center text-sm">
