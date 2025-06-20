@@ -6,6 +6,7 @@ import { LoadingState } from "@/components/loading-state";
 import { ErrorState } from "@/components/Error-state";
 
 
+
 export const AgentsView = () => {
 
     const trpc = useTRPC();
@@ -13,6 +14,7 @@ export const AgentsView = () => {
 
 
     return (
+        
         <div>
             {JSON.stringify(data , null , 2)}
         </div>
