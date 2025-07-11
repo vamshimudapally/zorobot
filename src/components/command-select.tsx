@@ -42,7 +42,10 @@ export const CommandSelect = ({
 
     return (
         <>
-            <Button onClick={()=> setOpen(true)} type="button" variant="outline"
+            <Button 
+            onClick={()=> setOpen(true)} 
+            type="button" 
+            variant="outline"
             className={cn(
                 "h-9 justify-between font-normal px-2",
                 !selectedOption && "text-muted-foreground",

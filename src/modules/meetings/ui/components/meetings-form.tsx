@@ -90,7 +90,6 @@ const agents = useQuery(
         defaultValues: {
             name: initialValues?.name ?? "",
             agentId: initialValues?.agentId ?? "",
-            instructions: initialValues?.instructions ?? "",
         },
     });
     const isEdit = !!initialValues?.id;
@@ -167,25 +166,7 @@ const agents = useQuery(
                     </FormItem>
                 )}
                 />
-
-                {/* <FormField 
-                name="instructions"
-                control={form.control}
-                render={({field}) => (
-                    <FormItem>
-                        <FormLabel>Instructions</FormLabel>
-                        <FormControl>
-                            <Textarea 
-                                {...field} 
-                                placeholder="e.g. Focus on code quality and best practices"
-                                rows={4}
-                            />
-                        </FormControl>
-                        <FormMessage  />
-                    </FormItem>
-                )}
-                /> */}
-               
+                
                 <div className="flex justify-between gap-x-2">
                     {onCancel && (
                         <Button 
