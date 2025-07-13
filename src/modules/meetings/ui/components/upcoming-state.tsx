@@ -14,7 +14,6 @@ export const UpcomingState = ({
     isCancelling,
 } : Props) => {
     return (
-
         <div className="bg-white rounded px-4 py-5 flex flex-col gap-y-8 items-center">
             <EmptyState 
             image="/upcoming.svg"
@@ -37,7 +36,6 @@ export const UpcomingState = ({
                     Start Meeting
                     </Link>
                 </Button>
-
             </div>
         </div>
     )
