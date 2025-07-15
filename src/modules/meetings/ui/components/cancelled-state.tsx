@@ -8,7 +8,7 @@ export const CancelledState = () => {
             <EmptyState 
             image="/cancelled.svg"
 
-            title="Meeting is cancelled"
+            title="Meeting Cancelled"
 
             description="This meeting was cancelled"
             />

@@ -10,9 +10,9 @@ import { UpdateMeetingDialog } from "../components/update-meeting-dialog.";
 import { useState } from "react";
 import { UpcomingState } from "../components/upcoming-state";
 
+import { ActiveState } from "../components/active-state copy";
 import { CancelledState } from "../components/cancelled-state";
 import { ProcessingState } from "../components/processing-state";
-import { ActiveState } from "../components/active-state copy";
 
 
 
@@ -75,14 +75,13 @@ export const MeetingIdView = ({meetingId} : Props) => {
             {isCompleted && <div>Completed</div> }
             {isActive && <ActiveState meetingId={meetingId} />}
 
-            {isUpcoming && (<UpcomingState
+            {isUpcoming && (<UpcomingState 
+
             meetingId={meetingId}
             onCancelMeeting={() => {}}
             isCancelling={false}
             /> )}
-
             
-
         </div>
         </>
     );
